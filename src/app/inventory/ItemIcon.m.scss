@@ -13,6 +13,8 @@ $commonBg: #366f42;
   position: relative;
   width: var(--item-size);
   height: var(--item-size);
+  aspect-ratio: 1;
+  flex: 0 0 var(--item-size);
   box-sizing: border-box;
   border: $item-border-width solid var(--theme-item-polaroid);
   background-size: contain;

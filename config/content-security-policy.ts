@@ -23,8 +23,6 @@ export default function csp(featureFlags: FeatureFlags, dimApiHost: string) {
       SELF,
       // For our inline styles
       "'unsafe-inline'",
-      // Google Fonts
-      'https://fonts.googleapis.com/',
     ],
     connectSrc: [
       SELF,
@@ -61,12 +59,7 @@ export default function csp(featureFlags: FeatureFlags, dimApiHost: string) {
       // OpenCollective backers
       'https://opencollective.com',
     ].filter((source) => source !== false),
-    fontSrc: [
-      SELF,
-      'data:',
-      // Google Fonts
-      'https://fonts.gstatic.com',
-    ],
+    fontSrc: [SELF, 'data:'],
     childSrc: [SELF],
     frameSrc: [
       // OpenCollective backers

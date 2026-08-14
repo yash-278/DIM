@@ -33,10 +33,9 @@
     flex-direction: row;
     padding: 0 var(--inventory-column-padding);
     box-sizing: border-box;
-    border-left: 1px solid transparent;
 
     &:not(:first-child) {
-      border-left-color: var(--theme-border-subtle);
+      box-shadow: inset 1px 0 0 var(--theme-border-subtle);
     }
 
     .store-header & {

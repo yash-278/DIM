@@ -18,6 +18,15 @@
 
 @layer base {
   @font-face {
+    font-family: 'Inter Variable';
+    src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2')
+      format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
     font-family: 'Destiny Symbols';
     src: url('../data/font/DestinySymbols.woff2') format('woff2');
     font-weight: 400;
@@ -47,6 +56,9 @@
   }
 
   :root {
+    --font-family-sans:
+      'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont,
+      'Segoe UI', sans-serif, 'Destiny Symbols', 'DIM Symbols';
     // Item width including border
     --item-size: 50px;
     // Margin on the bottom and right of an item
@@ -187,7 +199,7 @@
     margin: 0 auto;
     background-color: var(--theme-pwa-background);
     color: var(--theme-text);
-    font-family: 'Open Sans', sans-serif, 'Destiny Symbols', 'DIM Symbols';
+    font-family: var(--font-family-sans);
     font-size: 12px;
     line-height: calc(16 / 12);
     accent-color: var(--theme-accent-primary);
@@ -213,7 +225,7 @@
   input,
   select,
   option {
-    font-family: 'Open Sans', sans-serif, 'Destiny Symbols', 'DIM Symbols';
+    font-family: var(--font-family-sans);
   }
 
   input[type='text'],

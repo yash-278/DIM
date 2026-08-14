@@ -18,6 +18,8 @@
   justify-content: flex-end;
   line-height: calc(#{$badge-height});
   overflow: hidden;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
 }
 
 /* this width keeps the span aligned right (short text appears on right side of polaroid)
