@@ -28,7 +28,7 @@ ENV SENTRY_DSN="$SENTRY_DSN"
 ENV HUSKY=0
 
 COPY package.json pnpm-lock.yaml ./
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 RUN rm -rf destiny-icons \
