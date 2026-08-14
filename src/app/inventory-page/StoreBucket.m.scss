@@ -34,7 +34,7 @@
   gap: var(--item-margin);
   width: 100%;
   padding-bottom: var(--item-margin);
-  border-bottom: 1px solid rgb(150, 150, 150, 0.5);
+  border-bottom: 1px solid var(--theme-border-subtle);
 
   &:last-of-type {
     border-bottom: none;

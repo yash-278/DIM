@@ -8,12 +8,14 @@
     gap: var(--item-margin);
     align-content: flex-start;
     align-items: flex-start;
-    padding: 4px 0 calc(var(--item-margin) + 4px) 0;
+    padding: 6px 0 calc(var(--item-margin) + 6px) 0;
     position: relative;
+    border-top: 1px solid rgb(255, 255, 255, 0.025);
 
     &:empty {
       min-height: 0;
       padding: 0;
+      border-top: 0;
     }
   }
 }

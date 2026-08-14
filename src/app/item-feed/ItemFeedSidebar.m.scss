@@ -20,20 +20,26 @@
   width: var(--sidebar-size);
   height: 100%;
   box-sizing: border-box;
+  border-left: 1px solid var(--theme-border-strong);
+  box-shadow: -12px 0 30px rgb(0, 0, 0, 0.3);
 }
 
 .trayButton {
   composes: resetButton from '../dim-ui/common.m.scss';
   transform: rotate(-90deg);
-  background: black;
+  background: var(--theme-surface-raised);
   position: absolute;
   right: 100%;
   color: var(--theme-text);
-  padding: 4px 8px;
+  padding: 6px 10px;
   top: 0;
   transform-origin: bottom right;
   white-space: nowrap;
-  font-size: 16px;
+  border: 1px solid var(--theme-border-strong);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
   @include interactive($hover: true) {
     color: var(--theme-text-invert);

@@ -9,6 +9,10 @@
   text-align: left;
   white-space: nowrap;
   box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--theme-surface-raised);
+  border: 1px solid var(--theme-border-subtle);
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%);
 
   // Set the text off from the background
   text-shadow:
@@ -28,7 +32,7 @@
   grid-template-columns: 36px 1fr min-content;
   grid-template-rows: min-content 1fr;
   gap: 0 6px;
-  padding: 0 6px;
+  padding: 0 8px;
 
   // Use the emblem as a background
   background-size: $emblem-width $emblem-height;
@@ -51,10 +55,9 @@
   align-items: center;
   box-sizing: border-box;
   gap: 0 6px;
-  padding: 0 6px;
+  padding: 0 8px;
   // The vault needs a little border to stand out against some backgrounds
-  border: 1px solid rgb(0, 0, 0, 0.3);
-  border-right: none;
+  border-color: var(--theme-border-subtle);
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -72,17 +75,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  border-top: 13px solid var(--theme-accent-primary);
-  border-right: 13px solid transparent;
+  width: 3px;
+  height: 100%;
+  background: var(--theme-accent-primary);
+  border: 0;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--theme-accent-primary), transparent 40%);
 }
 
 .bigText {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
   margin-top: 2px;
 }
 
 .smallText {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 10px;
 }
 

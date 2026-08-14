@@ -8,17 +8,31 @@
   position: relative;
   box-sizing: border-box;
   max-width: $emblem-width;
+  transition:
+    filter 140ms ease-out,
+    transform 140ms ease-out;
 
   // Display an outline when hovering characters
   @include interactive($hover: true, $active: true, $focus: true) {
     outline: none;
+    filter: brightness(1.08);
     &::after {
       content: '';
       display: block;
       position: absolute;
-      inset: -4px;
-      border: 1px solid white;
+      inset: -2px;
+      border: 1px solid var(--theme-accent-primary);
       pointer-events: none;
     }
+  }
+
+  @include interactive($active: true) {
+    transform: translateY(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character {
+    transition: none;
   }
 }

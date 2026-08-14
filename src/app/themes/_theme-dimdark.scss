@@ -1,25 +1,33 @@
 // Basic DIM dark Theme
 .theme-dimdark {
   // Base colours
-  --theme-accent-primary: #d56520; // Interaction styles (hover, active, focus)
-  --theme-accent-secondary: #68a0b7; // Secondary interactions
+  --theme-accent-primary: #70e0ce; // Interaction styles (hover, active, focus)
+  --theme-accent-secondary: #83a9c9; // Secondary interactions
 
   // Generic fills for modal backgrounds (see below)
-  --theme-fill-modal: #0d0f14; // Base fill for popups, drawers, dropdowns etc
-  --theme-fill-modal-actions: #161616; // Layered/contextual modals (search, item actions)
+  --theme-fill-modal: #090d13; // Base fill for popups, drawers, dropdowns etc
+  --theme-fill-modal-actions: #121821; // Layered/contextual modals (search, item actions)
 
   // Text
-  --theme-text: #efefef;
-  --theme-text-invert: #efefef;
-  --theme-text-secondary: #aaa;
+  --theme-text: #f2f6fa;
+  --theme-text-invert: #07110f;
+  --theme-text-secondary: #9ba8b6;
+
+  // Dense workspace surfaces
+  --theme-surface-base: #0d1219;
+  --theme-surface-raised: #141b24;
+  --theme-surface-hover: #1b2631;
+  --theme-border-subtle: rgb(154, 183, 207, 0.12);
+  --theme-border-strong: rgb(159, 203, 220, 0.24);
+  --theme-header-shadow: 0 10px 28px rgb(0, 0, 0, 0.36);
 
   // Buttons
-  --theme-button-bg: rgb(255, 255, 255, 0.1);
-  --theme-button-bg-primary: rgb(255, 255, 255, 0.2);
+  --theme-button-bg: rgb(148, 177, 201, 0.1);
+  --theme-button-bg-primary: rgb(112, 224, 206, 0.18);
   --theme-button-text: var(--theme-text);
 
   // Input field (text boxes and text areas)
-  --theme-input-bg: #333;
+  --theme-input-bg: #111923;
 
   // Shadows
   --theme-drop-shadow: 0 0 18px 0 #000;
@@ -32,8 +40,8 @@
   --theme-tooltip-minimal-bg: #5d5970;
 
   // App background gradient pattern
-  --theme-app-bg-gradient-start: #1e222a;
-  --theme-app-bg-gradient-end: #1e222a;
+  --theme-app-bg-gradient-start: #121a24;
+  --theme-app-bg-gradient-end: #0b1017;
   --theme-app-bg-gradient: radial-gradient(
     circle at 50% 70px,
     var(--theme-app-bg-gradient-start) 0%,
@@ -45,12 +53,12 @@
   // Background color for (currently only) Settings page sections. Distinguishes them from theme-app-bg.
   --theme-section-bg: var(--theme-search-bg);
   // The color of PWA elements like the title bar. This cannot be a gradient.
-  --theme-pwa-background: #1e222a;
+  --theme-pwa-background: #090d13;
 
   // Header
-  --theme-header-nav-bg: var(--theme-app-bg-gradient);
+  --theme-header-nav-bg: #0b1017;
   --theme-header-nav-slideout-menu-bg: var(--theme-fill-modal);
-  --theme-header-characters-bg: var(--theme-app-bg-gradient);
+  --theme-header-characters-bg: #0e151e;
   --theme-header-characters-txt: var(--theme-text);
 
   // Dropdown menu
@@ -58,7 +66,8 @@
 
   // Search
   // Background color for the search bar. Distinguishes it from theme-header-nav-bg.
-  --theme-search-bg: rgb(0, 0, 0, 0.4);
+  --theme-search-bg: #111923;
+  --theme-search-dropdown-border: var(--theme-border-strong);
   --theme-search-dropdown-bg: var(--theme-fill-modal-actions);
 
   // Items

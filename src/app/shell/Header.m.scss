@@ -6,8 +6,8 @@ body {
   min-height: var(--viewport-height);
 }
 
-// The height of the black header bar
-$header-height: 44px;
+// The height of the desktop command bar
+$header-height: 48px;
 
 .container {
   position: fixed;
@@ -36,6 +36,8 @@ $header-height: 44px;
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
+  border-bottom: 1px solid var(--theme-border-subtle);
+  box-shadow: var(--theme-header-shadow);
   -webkit-app-region: drag;
 
   // Use the size of this element for the container query in .headerLinks. This
@@ -43,7 +45,9 @@ $header-height: 44px;
   container-type: inline-size;
 
   @include phone-portrait {
+    height: calc(env(titlebar-area-height, 44px) + env(safe-area-inset-top));
     background: var(--theme-mobile-background);
+    box-shadow: 0 4px 16px rgb(0, 0, 0, 0.3);
   }
 
   button,
@@ -66,17 +70,22 @@ $header-height: 44px;
 
 .logoLink {
   height: 24px;
+  margin-right: 10px !important;
+  padding-right: 12px;
+  border-right: 1px solid var(--theme-border-subtle);
 
   @include phone-portrait {
     height: 44px;
     margin: 0 4px !important;
+    padding-right: 0;
     display: flex;
     align-items: center;
+    border-right: 0;
   }
 }
 
 .menuItem {
-  margin: 0 8px;
+  margin: 0 6px;
   text-decoration: none;
   font-size: 13px;
   -webkit-touch-callout: none;
@@ -104,17 +113,55 @@ $header-height: 44px;
   cursor: default;
   display: flex;
   flex: 1;
-  margin: 0 6px 0 8px;
+  gap: 4px;
+  margin: 0 8px 0 10px;
   align-items: center;
   justify-content: flex-end;
   flex-direction: row;
   height: 100%;
+
+  @include phone-portrait {
+    gap: 0;
+    margin-right: 0;
+  }
+}
+
+.headerRight > .menuItem,
+.menu {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0 !important;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition:
+    color 140ms ease-out,
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    transform 140ms ease-out;
+
+  @include interactive($hover: true, $focus: true) {
+    color: var(--theme-accent-primary);
+    background-color: var(--theme-surface-hover);
+    border-color: var(--theme-border-strong);
+  }
+
+  @include interactive($active: true) {
+    transform: translateY(1px);
+  }
+
+  @include phone-portrait {
+    width: 44px;
+    height: 44px;
+    border: 0;
+  }
 }
 
 .menu {
   composes: resetButton from '../dim-ui/common.m.scss';
   position: relative;
-  margin-left: 16px !important;
+  margin-left: 8px !important;
 }
 
 .logo {
@@ -163,14 +210,34 @@ $header-height: 44px;
   }
 
   .menuItem {
-    height: 26px;
+    height: 32px;
+    margin: 0 1px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
     box-sizing: border-box;
+    color: var(--theme-text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition:
+      color 140ms ease-out,
+      background-color 140ms ease-out,
+      border-color 140ms ease-out;
+
+    @include interactive($hover: true, $focus: true) {
+      color: var(--theme-text);
+      background-color: var(--theme-surface-raised);
+      border-color: var(--theme-border-subtle);
+    }
 
     &.active {
-      border-bottom: 2px solid var(--theme-accent-primary);
+      color: var(--theme-text);
+      background-color: color-mix(in srgb, var(--theme-accent-primary), transparent 88%);
+      border-color: color-mix(in srgb, var(--theme-accent-primary), transparent 62%);
+      box-shadow: inset 0 -2px 0 var(--theme-accent-primary);
     }
   }
 }
@@ -243,6 +310,7 @@ $header-height: 44px;
 .searchLink {
   flex: 1;
   margin: 0 8px;
+  max-width: 720px;
 
   @include phone-portrait {
     margin: 0 12px;
@@ -250,6 +318,26 @@ $header-height: 44px;
 
   :global(.search-filter) {
     background: var(--theme-search-bg);
+    border: 1px solid var(--theme-border-subtle);
+    border-radius: 3px;
+    transition:
+      border-color 140ms ease-out,
+      background-color 140ms ease-out;
+
+    @include interactive($hover: true, $focusWithin: true) {
+      background-color: var(--theme-surface-raised);
+      border-color: color-mix(in srgb, var(--theme-accent-primary), transparent 52%);
+      box-shadow: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headerRight > .menuItem,
+  .menu,
+  .headerLinks .menuItem,
+  .searchLink :global(.search-filter) {
+    transition: none;
   }
 }
 

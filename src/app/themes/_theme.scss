@@ -15,6 +15,15 @@
   --theme-text-invert: #000;
   --theme-text-secondary: #aaa;
 
+  // Structural surfaces. These keep dense, workspace-style layouts consistent
+  // across themes without tying components to one palette.
+  --theme-surface-base: #12141a;
+  --theme-surface-raised: #191c24;
+  --theme-surface-hover: #222733;
+  --theme-border-subtle: rgb(255, 255, 255, 0.08);
+  --theme-border-strong: rgb(255, 255, 255, 0.16);
+  --theme-header-shadow: 0 8px 24px rgb(0, 0, 0, 0.28);
+
   // Buttons
   --theme-button-bg: rgb(255, 255, 255, 0.2);
   --theme-button-text: white;

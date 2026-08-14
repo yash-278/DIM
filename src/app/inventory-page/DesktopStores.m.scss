@@ -2,6 +2,7 @@
 
 .content {
   width: 100%;
+  background: var(--theme-app-bg);
 
   // Prevent collapsing at smaller than iPad landscape sizes
   min-width: calc(
@@ -12,9 +13,11 @@
 
 .buttons {
   display: grid;
-  grid-template-rows: 46px 1fr;
-  padding: 16px var(--inventory-column-padding) 6px 0;
+  grid-template-rows: 40px 1fr;
+  gap: 4px;
+  padding: 10px var(--inventory-column-padding) 8px 8px;
   place-items: center;
+  border-left: 1px solid var(--theme-border-subtle);
 }
 
 .singleCharacter {
@@ -24,28 +27,45 @@
 .singleCharacterButton {
   composes: resetButton from '../dim-ui/common.m.scss';
 
-  color: #9e9db5;
-  font-size: 26px;
-  width: min-content;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: var(--theme-text-secondary);
+  font-size: 18px;
+  background-color: var(--theme-surface-raised);
+  border: 1px solid var(--theme-border-subtle);
+  border-radius: 3px;
   transition:
-    transform 100ms ease-in-out,
-    color 100ms ease-in-out;
-  display: flex;
-  align-items: center;
+    transform 120ms ease-out,
+    color 120ms ease-out,
+    border-color 120ms ease-out,
+    background-color 120ms ease-out;
 
-  @include interactive($hover: true) {
-    transform: scale(1.25);
+  @include interactive($hover: true, $focus: true) {
     color: var(--theme-accent-primary);
+    background-color: var(--theme-surface-hover);
+    border-color: color-mix(in srgb, var(--theme-accent-primary), transparent 52%);
+  }
+
+  @include interactive($active: true) {
+    transform: translateY(1px);
   }
 }
 
 .vaultUnderButton {
   composes: singleCharacterButton;
 
-  font-size: 18px;
+  font-size: 15px;
 
   &.under > span {
     transform: rotate(90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .singleCharacterButton {
+    transition: none;
   }
 }
 
