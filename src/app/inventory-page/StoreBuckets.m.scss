@@ -37,6 +37,15 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.vaultCell {
+  // Vault buckets can contain hundreds of visually rich item tiles. Keep each
+  // grid on a composited surface so scrolling can reuse its rasterized content.
+  > :global(.sub-bucket) {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
 .vaultUnder {
   > .vaultCell {
     grid-column: 1 / -1;

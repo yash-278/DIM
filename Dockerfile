@@ -36,7 +36,7 @@ RUN rm -rf destiny-icons \
   && git -C destiny-icons remote add origin https://github.com/justrealmilk/destiny-icons.git \
   && git -C destiny-icons fetch --depth=1 origin "$DESTINY_ICONS_SHA" \
   && git -C destiny-icons checkout --detach FETCH_HEAD
-RUN pnpm build:release
+RUN pnpm build:beta
 
 FROM caddy:2-alpine
 

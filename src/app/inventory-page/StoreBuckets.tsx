@@ -52,7 +52,7 @@ export function StoreBuckets({
           </div>
         )}
         {(allStoresView || stores[0] === vault) && (
-          <div className="store-cell">
+          <div className={clsx('store-cell', styles.vaultCell)}>
             <StoreBucket bucket={bucket} store={vault} singleCharacter={false} />
           </div>
         )}
