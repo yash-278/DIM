@@ -66,11 +66,12 @@ export default (env: Env) => {
 
   const buildTime = Date.now();
   const publicPath = process.env.PUBLIC_PATH ?? '/';
+  const dimApiHost = process.env.DIM_API_HOST ?? 'http://localhost:3000';
 
   const featureFlags = makeFeatureFlags(env);
-  const contentSecurityPolicy = csp(env.name, featureFlags, version);
+  const contentSecurityPolicy = csp(featureFlags, dimApiHost);
 
-  const analyticsProperty = env.release ? 'G-1PW23SGMHN' : 'G-MYWW38Z3LR';
+  const analyticsProperty = process.env.ANALYTICS_PROPERTY ?? '';
   const jsFilenamePattern = env.dev ? '[name]-[fullhash].js' : '[name]-[contenthash:8].js';
   const cssFilenamePattern = env.dev ? '[name]-[fullhash].css' : '[name]-[contenthash:8].css';
 
@@ -472,6 +473,7 @@ export default (env: Env) => {
         date: new Date(buildTime).toString(),
         splash,
         analyticsProperty,
+        dimApiHost,
         publicPath,
       },
       minify: env.dev
@@ -519,6 +521,17 @@ export default (env: Env) => {
       },
     }),
 
+    // Generate the Railway Caddy config from the same CSP used by Apache and the dev server.
+    new HtmlWebpackPlugin({
+      filename: 'Caddyfile',
+      template: 'src/caddyfile',
+      inject: false,
+      minify: false,
+      templateParameters: {
+        csp: contentSecurityPolicy,
+      },
+    }),
+
     // Generate a version info JSON file we can poll. We could theoretically add more info here too.
     new GenerateJsonPlugin('./version.json', {
       version,
@@ -550,7 +563,9 @@ export default (env: Env) => {
       $DIM_WEB_CLIENT_ID: JSON.stringify(process.env.WEB_OAUTH_CLIENT_ID),
       $DIM_WEB_CLIENT_SECRET: JSON.stringify(process.env.WEB_OAUTH_CLIENT_SECRET),
       $DIM_API_KEY: JSON.stringify(process.env.DIM_API_KEY),
+      $DIM_API_HOST: JSON.stringify(dimApiHost),
       $ANALYTICS_PROPERTY: JSON.stringify(analyticsProperty),
+      $SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
       $PUBLIC_PATH: JSON.stringify(publicPath),
 
       $BROWSERS: JSON.stringify(browserslist(packageJson.browserslist)),

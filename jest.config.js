@@ -52,8 +52,12 @@ export default {
     $DIM_FLAVOR: 'test',
     $DIM_WEB_API_KEY: 'xxx',
     $DIM_API_KEY: 'xxx',
+    $DIM_API_HOST: 'http://localhost:3000',
     $DIM_VERSION: '1.0.0',
+    $ANALYTICS_PROPERTY: '',
+    $SENTRY_DSN: '',
     $featureFlags: {
+      analytics: false,
       dimApi: true,
       runLoInBackground: true,
       sentry: false,

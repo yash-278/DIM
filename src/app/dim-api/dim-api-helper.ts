@@ -5,7 +5,6 @@ import {
 import { dedupePromise } from 'app/utils/promises';
 import { HttpClientConfig } from 'bungie-api-ts/http';
 
-const DIM_API_HOST = 'https://api.destinyitemmanager.com';
 export const API_KEY = $DIM_FLAVOR !== 'dev' ? $DIM_API_KEY : localStorage.getItem('dimApiKey')!;
 
 const localStorageKey = 'dimApiToken';
@@ -21,7 +20,7 @@ export async function unauthenticatedApi<T>(
     throw new Error('No DIM API key configured');
   }
 
-  let url = `${DIM_API_HOST}${config.url}`;
+  let url = `${$DIM_API_HOST}${config.url}`;
   if (config.params) {
     // TODO: properly type HttpClientConfig
     url = `${url}?${new URLSearchParams(config.params).toString()}`;
@@ -74,7 +73,7 @@ export async function authenticatedApi<T>(config: HttpClientConfig): Promise<T> 
 
   const token = await getAuthToken();
 
-  let url = `${DIM_API_HOST}${config.url}`;
+  let url = `${$DIM_API_HOST}${config.url}`;
   if (config.params) {
     // TODO: properly type HttpClientConfig
     url = `${url}?${new URLSearchParams(config.params).toString()}`;

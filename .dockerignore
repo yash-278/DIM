@@ -1,5 +1,8 @@
 # Dependency directories
 node_modules
+.git
+destiny-icons
+dist
 
 # Logs
 logs
@@ -7,9 +10,6 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Documentation
-docs/
 
 # Misc.
 .vscode/

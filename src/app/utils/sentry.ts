@@ -25,14 +25,14 @@ const ignoreDimErrors: (string | PlatformErrorCodes)[] = [
 
 const options: BrowserOptions = {
   enabled: $featureFlags.sentry,
-  dsn: 'https://1367619d45da481b8148dd345c1a1330@sentry.io/279673',
+  dsn: $SENTRY_DSN,
   release: $DIM_VERSION,
   environment: $DIM_FLAVOR,
   ignoreErrors: [],
   sampleRate: $DIM_VERSION === 'beta' ? 0.5 : 0.01, // Sample Beta at 50%, Prod at 1%
   attachStacktrace: true,
   // Only send trace headers to our own server
-  tracePropagationTargets: ['https://api.destinyitemmanager.com'],
+  tracePropagationTargets: [$DIM_API_HOST],
   integrations: [
     browserTracingIntegration({
       beforeStartSpan: (context) => ({

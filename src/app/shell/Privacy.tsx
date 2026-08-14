@@ -44,23 +44,20 @@ export default function Privacy() {
                   consent or our legitimate interests, namely monitoring and improving our website
                   and services.
                 </li>
-                <li>
-                  We may use Google Analytics to analyze the use of our website. Google Analytics
-                  gathers information about website use by means of cookies. The information
-                  gathered relating to our website is used to create reports about the use of our
-                  website. Besides generic usage data, we also share your Bungie.net membership ID
-                  with Google Analytics to help provide a more accurate measure of how users use
-                  DIM. Google's privacy policy is available at:{' '}
-                  <ExternalLink href="https://www.google.com/policies/privacy/">
-                    https://www.google.com/policies/privacy/
-                  </ExternalLink>
-                  . We respect the Do Not Track setting. If you want to opt out of Google Analytics,
-                  you may use the{' '}
-                  <ExternalLink href="https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh?hl=en">
-                    Google Analytics Opt Out Extension for Chrome
-                  </ExternalLink>{' '}
-                  or similar tools for other browsers.
-                </li>
+                {$featureFlags.analytics && (
+                  <li>
+                    We may use Google Analytics to analyze the use of our website. Google Analytics
+                    gathers information about website use by means of cookies. The information
+                    gathered relating to our website is used to create reports about the use of our
+                    website. Besides generic usage data, we also share your Bungie.net membership ID
+                    with Google Analytics to help provide a more accurate measure of how users use
+                    DIM. Google's privacy policy is available at:{' '}
+                    <ExternalLink href="https://www.google.com/policies/privacy/">
+                      https://www.google.com/policies/privacy/
+                    </ExternalLink>
+                    .
+                  </li>
+                )}
               </ol>
             </li>
 
@@ -100,9 +97,9 @@ export default function Privacy() {
               <strong>DIM Sync: Settings (preferences), loadouts, tags and notes.</strong>
               <ol>
                 <li>
-                  DIM allows you to connect to DIM Sync, a cloud service operated by the DIM team,
-                  in order to store your data and sync it between instances of DIM or other Destiny
-                  apps. This information is only accessible to you and the DIM team. Information
+                  This deployment allows you to connect to DIM Sync, a cloud service operated by the
+                  owner of this site, in order to store your data and sync it between instances of
+                  DIM. This information is accessible to you and the site operator. Information
                   stored in DIM Sync includes your DIM preferences and settings, loadouts, any
                   per-item item tags and notes, saved and recently used search filters, and tracked
                   triumphs. Your Bungie.net authentication information is sent to DIM Sync only in

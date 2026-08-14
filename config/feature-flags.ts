@@ -17,8 +17,9 @@ export function makeFeatureFlags(env: {
     debugMoves: !env.release,
     // Debug Service Worker
     debugSW: !env.release,
-    // Send exception reports to Sentry.io on beta/prod only
-    sentry: !env.dev && !env.pr,
+    // Send telemetry only when this deployment supplies its own credentials.
+    analytics: Boolean(process.env.ANALYTICS_PROPERTY),
+    sentry: Boolean(process.env.SENTRY_DSN),
     // Community-curated wish lists
     wishLists: true,
     // Show a banner for supporting a charitable cause

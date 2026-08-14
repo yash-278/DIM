@@ -28,6 +28,10 @@ export function gaEvent(type: string, params: Record<string, string>) {
 }
 
 export function initGoogleAnalytics() {
+  if (!$featureFlags.analytics || !$ANALYTICS_PROPERTY) {
+    return;
+  }
+
   ga('js', new Date());
   const token = getToken();
   ga('config', $ANALYTICS_PROPERTY, {

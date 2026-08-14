@@ -36,7 +36,7 @@ export default function useGame2GiveData() {
       return;
     }
     try {
-      const response = await fetch('https://api.destinyitemmanager.com/donate');
+      const response = await fetch(`${$DIM_API_HOST}/donate`);
 
       // If there is an error communicating with the Game2Giver server, error gracefully.
       if (!response.ok) {

@@ -1,0 +1,35 @@
+:{$PORT:8080} {
+	root * /srv
+	encode zstd gzip
+
+	header {
+		-Server
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Content-Security-Policy "<%= csp %>"
+	}
+
+	@serviceWorker path /service-worker.js /service-worker.js.br /service-worker.js.gz
+	header @serviceWorker Cache-Control "public, max-age=0, must-revalidate"
+
+	@version path /version.json
+	header @version Cache-Control "public, max-age=900, must-revalidate"
+
+	@extensionless not path_regexp extension \.[^/]+$
+	header @extensionless Cache-Control "public, max-age=0, must-revalidate"
+
+	@htmlFiles path *.html
+	header @htmlFiles Cache-Control "public, max-age=0, must-revalidate"
+
+	@immutable path /static/*
+	header @immutable Cache-Control "public, max-age=31536000, immutable"
+
+	@spa {
+		not file
+		not path_regexp extension \.[^/]+$
+	}
+	rewrite @spa /index.html
+
+	file_server
+}

@@ -6,20 +6,18 @@ const SELF = "'self'";
 /**
  * Generate a Content Security Policy directive for a particular DIM environment (beta, release)
  */
-export default function csp(
-  env: 'release' | 'beta' | 'dev' | 'pr',
-  featureFlags: FeatureFlags,
-  version: string | undefined,
-) {
+export default function csp(featureFlags: FeatureFlags, dimApiHost: string) {
+  const sentryOrigin =
+    featureFlags.sentry && process.env.SENTRY_DSN ? new URL(process.env.SENTRY_DSN).origin : false;
   const baseCSP: Record<string, string[] | string | boolean> = {
     defaultSrc: ["'none'"],
     scriptSrc: [
       SELF,
-      'https://*.googletagmanager.com',
-      'https://*.google-analytics.com',
+      featureFlags.analytics && 'https://*.googletagmanager.com',
+      featureFlags.analytics && 'https://*.google-analytics.com',
       // OpenCollective backers
       'https://opencollective.com',
-    ],
+    ].filter((source) => source !== false),
     workerSrc: [SELF],
     styleSrc: [
       SELF,
@@ -31,18 +29,18 @@ export default function csp(
     connectSrc: [
       SELF,
       // Google Analytics
-      'https://*.google-analytics.com',
-      'https://*.analytics.google.com',
-      'https://*.googletagmanager.com',
+      featureFlags.analytics && 'https://*.google-analytics.com',
+      featureFlags.analytics && 'https://*.analytics.google.com',
+      featureFlags.analytics && 'https://*.googletagmanager.com',
       // Bungie.net API
       'https://www.bungie.net',
       // Sentry
-      featureFlags.sentry && 'https://sentry.io/api/279673/',
+      sentryOrigin,
       // Wishlists
       featureFlags.wishLists && 'https://raw.githubusercontent.com',
       featureFlags.wishLists && 'https://gist.githubusercontent.com',
       // DIM Sync
-      'https://api.destinyitemmanager.com',
+      dimApiHost,
       // Clarity
       featureFlags.clarityDescriptions && 'https://database-clarity.github.io',
       // Stream Deck Plugin
@@ -58,11 +56,11 @@ export default function csp(
       // Bungie.net images
       'https://www.bungie.net',
       // Google analytics tracking
-      'https://*.google-analytics.com',
-      'https://*.googletagmanager.com',
+      featureFlags.analytics && 'https://*.google-analytics.com',
+      featureFlags.analytics && 'https://*.googletagmanager.com',
       // OpenCollective backers
       'https://opencollective.com',
-    ],
+    ].filter((source) => source !== false),
     fontSrc: [
       SELF,
       'data:',
@@ -84,14 +82,6 @@ export default function csp(
     baseUri: [SELF],
     formAction: [SELF],
   };
-
-  // Turn on CSP reporting to sentry.io on beta only
-  if (featureFlags.sentry && env === 'beta') {
-    baseCSP.reportUri = `https://sentry.io/api/279673/csp-report/?sentry_key=1367619d45da481b8148dd345c1a1330&sentry_environment=${env}`;
-    if (version) {
-      baseCSP.reportUri += `&sentry_release=${version}`;
-    }
-  }
 
   return builder({
     directives: baseCSP,
