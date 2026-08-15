@@ -20,6 +20,16 @@
   }
 }
 
+// Vault buckets are normally promoted to their own compositing layer to keep
+// scrolling smooth. A transform also creates a stacking context, though, which
+// traps the sub-bucket's z-index below the full-screen drag overlay. Temporarily
+// remove that stacking context while dragging so the drop-target overlays can
+// stay above the global hit-testing shield.
+.dragPerfShow :global(.sub-bucket) {
+  transform: none !important;
+  backface-visibility: visible !important;
+}
+
 // Each sub-bucket (inventory drag target) gets its own overlay as well, with a
 // z-index one higher than the global overlay. This allows them to still receive
 // drag events.
