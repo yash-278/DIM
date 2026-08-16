@@ -54,36 +54,28 @@
 }
 
 .elemental {
+  --weapon-badge-foreground: #000;
+  --weapon-badge-icon-filter: brightness(0);
   color: var(--weapon-badge-foreground);
 }
 
 .arc {
-  --weapon-badge-foreground: #000;
-  --weapon-badge-icon-filter: brightness(0);
   background-color: $arc;
 }
 
 .solar {
-  --weapon-badge-foreground: #fff;
-  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: $solar;
 }
 
 .void {
-  --weapon-badge-foreground: #fff;
-  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: $void;
 }
 
 .stasis {
-  --weapon-badge-foreground: #fff;
-  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: $stasis;
 }
 
 .strand {
-  --weapon-badge-foreground: #000;
-  --weapon-badge-icon-filter: brightness(0);
   background-color: $strand;
 }
 
