@@ -5,6 +5,7 @@ interface CssExports {
   'hasBadge': string;
   'icon': string;
   'icons': string;
+  'masterworkCard': string;
   'searchHidden': string;
   'statFocus': string;
   'subclass': string;

@@ -79,6 +79,7 @@ export default function InventoryItem({
     [styles.searchHidden]: searchHidden,
     [styles.subclass]: isSubclass,
     [styles.hasBadge]: hasBadge,
+    [styles.masterworkCard]: item.masterwork,
   });
   // Subtitle for engram powerlevel vs regular item type
   const subtitle = item.destinyVersion === 2 && item.isEngram ? item.power : item.typeName;

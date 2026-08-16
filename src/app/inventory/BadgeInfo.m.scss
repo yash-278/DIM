@@ -33,41 +33,57 @@
   margin-right: 4px;
 }
 
+.weapon {
+  color: var(--weapon-badge-foreground);
+
+  // Footer icons use the same binary contrast choice as the power text.
+  // RatingIcon otherwise supplies its own semantic color.
+  :global(.app-icon) {
+    color: currentColor;
+  }
+
+  .breakerIcon {
+    filter: var(--weapon-badge-icon-filter);
+  }
+}
+
 .kinetic {
+  --weapon-badge-foreground: #fff;
+  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: #000;
-  color: #fff;
 }
 
 .elemental {
   color: var(--weapon-badge-foreground);
-  text-shadow: var(--weapon-badge-text-shadow, none);
 }
 
 .arc {
-  --weapon-badge-foreground: #080b0f;
+  --weapon-badge-foreground: #000;
+  --weapon-badge-icon-filter: brightness(0);
   background-color: $arc;
 }
 
 .solar {
   --weapon-badge-foreground: #fff;
-  --weapon-badge-text-shadow: 0 1px 1px rgb(0, 0, 0, 0.45);
+  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: $solar;
 }
 
 .void {
   --weapon-badge-foreground: #fff;
-  --weapon-badge-text-shadow: 0 1px 1px rgb(0, 0, 0, 0.45);
+  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: $void;
 }
 
 .stasis {
   --weapon-badge-foreground: #fff;
-  --weapon-badge-text-shadow: 0 1px 1px rgb(0, 0, 0, 0.45);
+  --weapon-badge-icon-filter: brightness(0) invert(1);
   background-color: $stasis;
 }
 
 .strand {
-  --weapon-badge-foreground: #080b0f;
+  --weapon-badge-foreground: #000;
+  --weapon-badge-icon-filter: brightness(0);
   background-color: $strand;
 }
 
@@ -103,14 +119,15 @@
   background-color: var(--theme-item-polaroid-capped);
 }
 
-.masterwork {
-  border: $item-border-width solid var(--theme-item-polaroid-masterwork);
-  border-top: 0;
-}
-
 .deepsight {
   border-bottom: 1px solid $deepsight-border-color;
   border-left: 1px solid $deepsight-border-color;
   border-right: 1px solid $deepsight-border-color;
   padding: 0 1px;
+}
+
+.masterwork {
+  border: $item-border-width solid $masterwork-border-color;
+  // Keep a visible gold seam between the image and its footer.
+  border-top: $item-border-width solid $masterwork-border-color;
 }

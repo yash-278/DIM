@@ -17,6 +17,7 @@ interface CssExports {
   'stasis': string;
   'strand': string;
   'void': string;
+  'weapon': string;
 }
 export const cssExports: CssExports;
 export = cssExports;

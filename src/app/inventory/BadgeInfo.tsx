@@ -84,6 +84,7 @@ export default function BadgeInfo({ item, isCapped, wishlistRoll }: Props) {
   return (
     <div
       className={clsx(styles.badge, weaponDamageStyle, {
+        [styles.weapon]: item.bucket.inWeapons,
         [styles.elemental]: weaponDamageStyle !== undefined && weaponDamageStyle !== styles.kinetic,
         [styles.fullstack]: isStackable && item.amount === item.maxStackSize,
         [styles.capped]: isCapped,
@@ -105,7 +106,7 @@ export default function BadgeInfo({ item, isCapped, wishlistRoll }: Props) {
         <BreakerTypeIcon
           className={styles.breakerIcon}
           breakerType={item.breakerType}
-          lightBackground
+          lightBackground={!item.bucket.inWeapons}
         />
       )}
       {item.element && !item.bucket.inWeapons && (

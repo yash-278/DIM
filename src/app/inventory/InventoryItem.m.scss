@@ -24,6 +24,16 @@
   height: calc(var(--item-size) + #{$badge-height} - #{$item-border-width});
 }
 
+.masterworkCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  border: $item-border-width solid $masterwork-border-color;
+  pointer-events: none;
+}
+
 // The wrapper for draggable items. Global because it's referenced by other styles.
 :global(.item-drag-container) {
   contain: layout paint style;

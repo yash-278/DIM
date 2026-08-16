@@ -58,9 +58,6 @@ $commonBg: #366f42;
 }
 
 // Alternate border styles
-.masterwork {
-  border-color: var(--theme-item-polaroid-masterwork);
-}
 .deepsight {
   border-color: $deepsight-border-color;
   &::after {
@@ -146,6 +143,12 @@ $commonBg: #366f42;
 // Engrams and packages
 .borderless {
   border-color: transparent;
+}
+
+// Keep masterwork as the final border treatment so capped/deepsight states do
+// not replace the visible gold card outline.
+.masterwork {
+  border-color: $masterwork-border-color;
 }
 
 .seasonIcon {
