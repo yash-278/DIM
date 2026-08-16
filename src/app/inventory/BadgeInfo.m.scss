@@ -1,7 +1,7 @@
 @use '../variables.scss' as *;
 
 .badge {
-  --breaker-size: calc(#{dim-item-px(8)});
+  --breaker-size: calc(#{$badge-font-size});
   --element-size: calc(#{dim-item-px(10)});
   margin-top: -1 * $item-border-width;
   background-color: var(--theme-item-polaroid);
@@ -27,6 +27,48 @@
 .badgeContent {
   max-width: 100%;
   max-height: 100%;
+}
+
+.breakerIcon {
+  margin-right: 4px;
+}
+
+.kinetic {
+  background-color: #000;
+  color: #fff;
+}
+
+.elemental {
+  color: var(--weapon-badge-foreground);
+  text-shadow: var(--weapon-badge-text-shadow, none);
+}
+
+.arc {
+  --weapon-badge-foreground: #080b0f;
+  background-color: $arc;
+}
+
+.solar {
+  --weapon-badge-foreground: #fff;
+  --weapon-badge-text-shadow: 0 1px 1px rgb(0, 0, 0, 0.45);
+  background-color: $solar;
+}
+
+.void {
+  --weapon-badge-foreground: #fff;
+  --weapon-badge-text-shadow: 0 1px 1px rgb(0, 0, 0, 0.45);
+  background-color: $void;
+}
+
+.stasis {
+  --weapon-badge-foreground: #fff;
+  --weapon-badge-text-shadow: 0 1px 1px rgb(0, 0, 0, 0.45);
+  background-color: $stasis;
+}
+
+.strand {
+  --weapon-badge-foreground: #080b0f;
+  background-color: $strand;
 }
 
 .engram {
@@ -62,8 +104,8 @@
 }
 
 .masterwork {
-  background-color: var(--theme-item-polaroid-masterwork);
-  color: var(--theme-item-polaroid-masterwork-txt);
+  border: $item-border-width solid var(--theme-item-polaroid-masterwork);
+  border-top: 0;
 }
 
 .deepsight {

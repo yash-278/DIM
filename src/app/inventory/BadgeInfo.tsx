@@ -3,6 +3,7 @@ import { TOTAL_STAT_HASH } from 'app/search/d2-known-values';
 import { getD1QualityColor } from 'app/shell/formatters';
 import { isD1Item } from 'app/utils/item-utils';
 import { InventoryWishListRoll, toUiWishListRoll } from 'app/wishlists/wishlists';
+import { DamageType } from 'bungie-api-ts/destiny2';
 import clsx from 'clsx';
 import { BucketHashes } from 'data/d2/generated-enums';
 import { useSelector } from 'react-redux';
@@ -17,6 +18,14 @@ interface Props {
   isCapped: boolean;
   wishlistRoll?: InventoryWishListRoll;
 }
+
+const weaponDamageStyles: Partial<Record<DamageType, string>> = {
+  [DamageType.Arc]: styles.arc,
+  [DamageType.Thermal]: styles.solar,
+  [DamageType.Void]: styles.void,
+  [DamageType.Stasis]: styles.stasis,
+  [DamageType.Strand]: styles.strand,
+};
 
 export function shouldShowBadge(item: DimItem) {
   const isBounty = Boolean(!item.primaryStat && item.objectives);
@@ -68,10 +77,14 @@ export default function BadgeInfo({ item, isCapped, wishlistRoll }: Props) {
   const summaryIcon = wishlistRollIcon !== undefined && (
     <RatingIcon uiWishListRoll={wishlistRollIcon} />
   );
+  const weaponDamageStyle = item.bucket.inWeapons
+    ? (weaponDamageStyles[item.element?.enumValue ?? DamageType.Kinetic] ?? styles.kinetic)
+    : undefined;
 
   return (
     <div
-      className={clsx(styles.badge, {
+      className={clsx(styles.badge, weaponDamageStyle, {
+        [styles.elemental]: weaponDamageStyle !== undefined && weaponDamageStyle !== styles.kinetic,
         [styles.fullstack]: isStackable && item.amount === item.maxStackSize,
         [styles.capped]: isCapped,
         [styles.masterwork]: item.masterwork,
@@ -88,8 +101,14 @@ export default function BadgeInfo({ item, isCapped, wishlistRoll }: Props) {
         </div>
       )}
       {summaryIcon}
-      {item.breakerType && <BreakerTypeIcon breakerType={item.breakerType} lightBackground />}
-      {item.element && (
+      {item.breakerType && (
+        <BreakerTypeIcon
+          className={styles.breakerIcon}
+          breakerType={item.breakerType}
+          lightBackground
+        />
+      )}
+      {item.element && !item.bucket.inWeapons && (
         <ElementIcon element={item.element} d1Badge={item.destinyVersion === 1} lightBackground />
       )}
       <span className={styles.badgeContent}>{badgeContent}</span>
