@@ -48,9 +48,9 @@
 }
 
 .kinetic {
-  --weapon-badge-foreground: #fff;
-  --weapon-badge-icon-filter: brightness(0) invert(1);
-  background-color: #000;
+  --weapon-badge-foreground: #000;
+  --weapon-badge-icon-filter: brightness(0);
+  background-color: #fff;
 }
 
 .elemental {
