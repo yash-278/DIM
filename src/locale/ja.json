@@ -324,6 +324,7 @@
       "Tagged": "タグ付けされたアイテムだけを表示します。"
     },
     "Tier": "レベルに応じたアイテムを表示します。",
+    "TieredWeapon": "Shows weapons that can drop tiered or be upgraded to have tiers.",
     "Timelost": "\\(時間超越\\)",
     "Tracked": "クエスト、バウンティのステータスを基に表示",
     "Transferable": "キャラクター間で移動可能なアイテムを表示します。",
@@ -1227,6 +1228,7 @@
     "SizeItem": "アイテムサイズ",
     "SortByAmmoType": "弾のタイプ",
     "SortByAmount": "所持数(消耗品のみ対象)",
+    "SortByBreakerType": "Anti-Champion Type",
     "SortByClassType": "クラス専用武器",
     "SortByCrafted": "クラフト済 (D2)",
     "SortByDeepsight": "ディープサイト (D2)",

@@ -119,6 +119,9 @@
 }
 
 .masterwork {
+  --theme-item-polaroid-invert: var(--theme-item-polaroid-invert-mw);
+  background-color: var(--theme-item-polaroid-masterwork);
+  color: var(--theme-item-polaroid-masterwork-txt);
   border: $item-border-width solid $masterwork-border-color;
   // Keep a visible gold seam between the image and its footer.
   border-top: $item-border-width solid $masterwork-border-color;

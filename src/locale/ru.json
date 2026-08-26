@@ -369,6 +369,7 @@
       "Tagged": "С любым Тэгом."
     },
     "Tier": "Shows items based on their tier from 0-5.",
+    "TieredWeapon": "Shows weapons that can drop tiered or be upgraded to have tiers.",
     "Timelost": "\\(вневременн(ой|ая)\\)",
     "Tracked": "Контракты/Преследования по статусу отслеживания.",
     "Transferable": "Перемещаемые.",
@@ -1320,6 +1321,7 @@
     "SizeItem": "Размер предмета",
     "SortByAmmoType": "Тип боеприпасов",
     "SortByAmount": "Количество",
+    "SortByBreakerType": "Anti-Champion Type",
     "SortByClassType": "Класс",
     "SortByCrafted": "Изготовленное (D2)",
     "SortByDeepsight": "Резонанс Глубинного зрения (D2)",

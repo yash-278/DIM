@@ -339,6 +339,7 @@
       "Tagged": "Zeigt Gegenstände mit irgend einem Tag an."
     },
     "Tier": "Zeigt Gegenstände basierend auf ihrem Tier von 0-5.",
+    "TieredWeapon": "Zeigt Waffen, die mit Tier-Stufen droppen oder Tier-Stufen bekommen können.",
     "Timelost": "\\(zeitverirrt\\)",
     "Tracked": "Zeigt Quests/Beutezüge basierend auf ihrem Verfolgungszustand an.",
     "Transferable": "Gegenstände, die zwischen den Charakteren verschoben werden können.",
@@ -1258,6 +1259,7 @@
     "SizeItem": "Gegenstandsgröße",
     "SortByAmmoType": "Munitionstyp",
     "SortByAmount": "Stapelgröße",
+    "SortByBreakerType": "Anti-Champion-Typ",
     "SortByClassType": "Benötigte Klasse",
     "SortByCrafted": "Geformt (D2)",
     "SortByDeepsight": "Tiefensicht (D2)",
